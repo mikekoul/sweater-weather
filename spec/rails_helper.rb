@@ -1,6 +1,4 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'simplecov'
-SimpleCov.start
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -70,6 +68,13 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data ('MAPQUEST_KEY') { ENV['MAPQUEST_KEY'] }
 end
 
 
