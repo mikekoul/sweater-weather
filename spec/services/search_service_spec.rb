@@ -12,7 +12,7 @@ RSpec.describe SearchService do
       expect(response).to have_key(:docs)
       expect(response[:docs]).to be_a(Array)
       expect(response[:docs][1]).to have_key(:title)
-      expect(response[:docs][1][:title]).to be_a(String)
+      expect(response[:docs][1][:title]).to be_a(String)book
       expect(response[:docs][4]).to have_key(:isbn)
       expect(response[:docs][4][:isbn]).to be_a(Array)
       expect(response[:docs][4][:isbn].first).to be_a(String)
