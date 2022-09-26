@@ -2,7 +2,7 @@ class WeatherSerializer
   include JSONAPI::Serializer
   
   def initialize(response_data)
-    @cw = response_data.first
+    @cw = response_data.first.first
     @dw = response_data.second
     @hw = response_data.third
   end
@@ -10,7 +10,7 @@ class WeatherSerializer
   def response
     {
       "data": {
-        "id": null,
+        "id": nil,
         "type": "forecast",
         "attributes": {
           "current_weather": {
@@ -26,7 +26,7 @@ class WeatherSerializer
             "icon": @cw.icon            
             },
           "daily_weather": [{
-              "date": @dw[0].date
+              "date": @dw[0].date,
               "sunrise": @dw[0].sunrise,
               "sunset": @dw[0].sunset,
               "min_temp": @dw[0].min_temp,
@@ -35,7 +35,7 @@ class WeatherSerializer
               "icon": @dw[0].icon
             },
             { 
-              "date": @dw[1].date
+              "date": @dw[1].date,
               "sunrise": @dw[1].sunrise,
               "sunset": @dw[1].sunset,
               "min_temp": @dw[1].min_temp,
@@ -44,7 +44,7 @@ class WeatherSerializer
               "icon": @dw[1].icon
             },
             {
-              "date": @dw[2].date
+              "date": @dw[2].date,
               "sunrise": @dw[2].sunrise,
               "sunset": @dw[2].sunset,
               "min_temp": @dw[2].min_temp,
@@ -53,7 +53,7 @@ class WeatherSerializer
               "icon": @dw[2].icon
             },
             {
-              "date": @dw[3].date
+              "date": @dw[3].date,
               "sunrise": @dw[3].sunrise,
               "sunset": @dw[3].sunset,
               "min_temp": @dw[3].min_temp,
@@ -62,7 +62,7 @@ class WeatherSerializer
               "icon": @dw[3].icon
             },
             {
-              "date": @dw[4].date
+              "date": @dw[4].date,
               "sunrise": @dw[4].sunrise,
               "sunset": @dw[4].sunset,
               "min_temp": @dw[4].min_temp,
