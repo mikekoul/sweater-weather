@@ -16,4 +16,11 @@ class WeatherFacade
     end
     [current_weather, daily_forecast, hourly_forecast]
   end
+
+  def self.current(lat, long)
+    current_weather = []
+    json = WeatherService.forecast(lat, long)
+    current_weather << CurrentWeather.new(json[:current])
+    current_weather
+  end
 end
