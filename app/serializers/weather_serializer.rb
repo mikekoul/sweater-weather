@@ -1,10 +1,10 @@
 class WeatherSerializer
   include JSONAPI::Serializer
   
-  def initialize(response_data)
-    @cw = response_data.first.first
-    @dw = response_data.second
-    @hw = response_data.third
+  def initialize(current, daily, hourly)
+    @cw = current[0]
+    @dw = daily
+    @hw = hourly
   end
 
   def response
