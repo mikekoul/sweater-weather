@@ -5,7 +5,7 @@ describe 'Brewery Search API' do
     
     get "/api/v1/breweries?location=denver&quantity=5"
 
-    data = JSON.parse(response.body, symbolize_names: true)
+    data = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(response).to be_successful
     expect(data).to be_a(Hash)
@@ -33,6 +33,24 @@ describe 'Brewery Search API' do
       expect(brew[:name]).to be_a(String)
       expect(brew).to have_key(:brewery_type)
       expect(brew[:name]).to be_a(String)
+    end
+  end
+
+  describe '#sad_path' do
+    it 'returns status 400 if no location param is given' do
+
+      get "/api/v1/breweries?location=&quantity=5"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+    end
+
+    it 'returns status 400 if no quantity param is given' do
+
+      get "/api/v1/breweries?location=denver&quantity="
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
     end
   end
 end
