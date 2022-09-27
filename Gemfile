@@ -5,7 +5,8 @@ ruby '2.7.4'
 
   gem 'faraday'
   gem 'jsonapi-serializer'
-
+  gem 'bcrypt'
+  gem 'email_validator'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
 # Use postgresql as the database for Active Record
