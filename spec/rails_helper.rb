@@ -75,6 +75,9 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data ('MAPQUEST_KEY') { ENV['MAPQUEST_KEY'] }
+  config.filter_sensitive_data ('OPEN_KEY') { ENV['OPEN_KEY'] }
+  config.default_cassette_options = { re_record_interval: 60.days }
+  config.configure_rspec_metadata!
 end
 
 
