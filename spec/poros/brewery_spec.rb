@@ -8,7 +8,6 @@ RSpec.describe Brewery do
         id: "10129",
         name: "Denver Beer Co Olde Town Arvada",
         brewery_type: "micro",
-        city: "denver"
       }
 
       results = Brewery.new(data)
@@ -17,7 +16,6 @@ RSpec.describe Brewery do
       expect(results.id).to eq("10129")
       expect(results.name).to eq("Denver Beer Co Olde Town Arvada")
       expect(results.brewery_type).to eq("micro")
-      expect(results.city).to eq("denver")
     end
   end
 end
