@@ -30,3 +30,23 @@ describe 'User Account Creation API' do
     expect(result[:data][:attributes][:api_key]).to be_a(String)
   end
 end
+
+  describe "#sad_path" do
+    it 'returns an error when the passwords do not match' do
+      user_info = { 
+      "email": 'mikek@gmail.com',
+      "password": 'pass123',
+      "password_confirmation": 'testtest'
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_info)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to_not be_successful
+    expect(result[:data][:message]).to eq('Passwords do not match')
+    end
+  end
+
