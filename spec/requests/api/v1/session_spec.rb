@@ -36,3 +36,39 @@ describe 'Session API' do
     expect(result[:data][:attributes][:api_key]).to be_a(String)
   end
 end
+
+describe "#sad_path" do
+  it 'returns an error if wrong email is entered' do
+    credentials = {
+      email: "wrongemail@mail.com",
+      password: @password
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(credentials)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    expect(result[:data][:message]).to eq('Invalid Credentials')
+  end
+
+  it 'returns an error if wrong email is entered' do
+    credentials = {
+      email: @email,
+      password: 'wrongpass'
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(credentials)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    expect(result[:data][:message]).to eq('Invalid Credentials')
+  end
+end
