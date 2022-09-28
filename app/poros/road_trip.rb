@@ -5,11 +5,11 @@ class RoadTrip
     @start_city = start_city
     @end_city = end_city
     @trip_time = Time.at(trip_time).utc.strftime("%H:%M:%S")
-    @conditions = forecast.conditions
     if forecast.class == DailyWeather
       @temperature = ((forecast.max_temp + forecast.min_temp) / 2).round(2)
     else forecast.class == HourlyWeather
       @temperature = forecast.temp
     end
+    @conditions = forecast.conditions
   end
 end
