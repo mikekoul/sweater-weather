@@ -46,7 +46,55 @@ end
     result = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to_not be_successful
+    expect(response.status).to eq(400)
     expect(result[:data][:message]).to eq('Passwords do not match')
+    end
+
+    it 'returns an error ' do
+      user_1 = { 
+      "email": 'mikek@gmail.com',
+      "password": 'pass123',
+      "password_confirmation": 'pass123'
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_1)
+
+    user_2 = { 
+      "email": 'mikek@gmail.com',
+      "password": 'pass1234',
+      "password_confirmation": 'pass1234'
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_2)
+
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    expect(result[:data][:message]).to eq('Email already exists')
+    end
+
+    it 'returns an error when the passwords do not match' do
+      user_info = { 
+      "email": '',
+      "password": 'pass123',
+      "password_confirmation": 'pass123'
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_info)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    expect(result[:data][:message]).to eq('Invalid Credentials')
     end
   end
 
