@@ -24,6 +24,9 @@ RSpec.describe MapService do
 
       expect(response).to be_a(Hash)
       expect(response).to have_key(:route)
+      expect(response[:route]).to be_a(Hash)
+      expect(response[:route]).to have_key(:formattedTime)
+      expect(response[:route][:formattedTime]).to be_a(String)
     end
   end
 end
