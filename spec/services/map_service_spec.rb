@@ -18,7 +18,7 @@ RSpec.describe MapService do
       expect(response[:results].last[:locations].first[:latLng][:lng]).to be_a(Float)
     end
 
-    it 'returns route information when a start and end location is provided' do
+    it 'returns route information when a start and end location is provided', :vcr do
 
       response = MapService.route('denver,co', 'santa fe, nm')
 

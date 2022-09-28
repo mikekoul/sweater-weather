@@ -15,5 +15,4 @@ class MapService
     response = conn.get("/directions/v2/route?key=#{ENV['MAPQUEST_KEY']}&from=#{start_location}&to=#{end_location}")
     JSON.parse(response.body, symbolize_names: true)
   end
-
 end
