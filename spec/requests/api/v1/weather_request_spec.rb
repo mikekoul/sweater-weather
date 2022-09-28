@@ -67,6 +67,7 @@ describe 'Weather Forecast API' do
     end
   end
 end
+
   describe '#sad_path' do
     it 'returns an error message if no location is given' do
       get "/api/v1/forecast?location="
