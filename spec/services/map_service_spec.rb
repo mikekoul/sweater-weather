@@ -17,5 +17,13 @@ RSpec.describe MapService do
       expect(response[:results].last[:locations].first[:latLng]).to have_key(:lng)
       expect(response[:results].last[:locations].first[:latLng][:lng]).to be_a(Float)
     end
+
+    it 'returns route information when a start and end location is provided' do
+
+      response = MapService.route('denver,co', 'santa fe, nm')
+
+      expect(response).to be_a(Hash)
+      expect(response).to have_key(:route)
+    end
   end
 end
