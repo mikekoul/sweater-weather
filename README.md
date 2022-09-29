@@ -25,7 +25,7 @@ Test both API consumption and exposure, making use of at least one mocking tool 
 Return information in JSON format
 
 Further information can be found here
-[Whether, Sweater](https://link-url-here.org](https://backend.turing.edu/module3/projects/sweater_weather/))
+[Whether, Sweater](https://backend.turing.edu/module3/projects/sweater_weather/)
 
 ## Technologies
   - Javascript
