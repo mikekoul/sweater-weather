@@ -37,14 +37,14 @@ The external APIs used in this project require user registration and keys can be
 - [MapQuest API](https://developer.mapquest.com/documentation/)
 - [OPenWeather API](https://openweathermap.org/api/one-call-api)
 - 
-Once keys are obtained install figaro to generate a 'application.yml' file which can be found in the 'config' folder:
+Once keys are obtained install figaro to generate a `application.yml` file which can be found in the `config` folder:
 
 '$ bundle exec figaro install'
 
-Store API Keys in this 'application.yml' which will be ingnored by git and kept from being pushed to GitHub
+Store API Keys in this `application.yml` which will be ingnored by git and kept from being pushed to GitHub
 
-`MAPQUEST_API_KEY: Your key`
-`OPENWEATHER_API_KEY: Your key`
+`MAPQUEST_API_KEY: Your key
+OPENWEATHER_API_KEY: Your key`
 
 ## Wins
 	- What went well!
