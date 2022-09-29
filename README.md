@@ -43,17 +43,135 @@ Once keys are obtained install figaro to generate a `application.yml` file which
 
 Store API Keys in this `application.yml` which will be ingnored by git and kept from being pushed to GitHub
 
-`MAPQUEST_API_KEY: Your key
-OPENWEATHER_API_KEY: Your key`
+`MAPQUEST_API_KEY: Your key`
+`OPENWEATHER_API_KEY: Your key`
 
-## Wins
-	- What went well!
-	- Successes
+## API Endpoints and Example Output
 
-## Challenges + Improvements
-	- What was difficult & how you would like to improve on code/project
-	- Any Bugs
-	- Future Iterations
+### `GET /api/v1/forecast?location={{search_location}}`
+
+Returns a JSON formatted hash with the current weather, daily forecasts for the next five days, and hourly forecasts for the next eight hours
+
+```
+{
+    "data": {
+        "id": null,
+        "type": "forecast",
+        "attributes": {
+            "current_weather": {
+                "datetime": "September 29 2022, 7:28 AM",
+                "sunrise": "September 29 2022, 6:54 AM",
+                "sunset": "September 29 2022, 6:46 PM",
+                "temperature": 60.19,
+                "feels_like": 58.15,
+                "humidity": 48,
+                "uvi": 0,
+                "visibility": 10000,
+                "conditions": "scattered clouds",
+                "icon": "03d"
+            },
+            "daily_weather": [
+                {
+                    "date": "September 29 2022",
+                    "sunrise": "September 29 2022, 6:54 AM",
+                    "sunset": "September 29 2022, 6:46 PM",
+                    "min_temp": 60.19,
+                    "max_temp": 83.34,
+                    "conditions": "light rain",
+                    "icon": "10d"
+                },
+                {
+                    "date": "September 30 2022",
+                    "sunrise": "September 30 2022, 6:55 AM",
+                    "sunset": "September 30 2022, 6:44 PM",
+                    "min_temp": 56.32,
+                    "max_temp": 81.07,
+                    "conditions": "moderate rain",
+                    "icon": "10d"
+                },
+                {
+                    "date": "October 01 2022",
+                    "sunrise": "October 01 2022, 6:56 AM",
+                    "sunset": "October 01 2022, 6:42 PM",
+                    "min_temp": 55.99,
+                    "max_temp": 73.38,
+                    "conditions": "light rain",
+                    "icon": "10d"
+                },
+                {
+                    "date": "October 02 2022",
+                    "sunrise": "October 02 2022, 6:57 AM",
+                    "sunset": "October 02 2022, 6:41 PM",
+                    "min_temp": 54.77,
+                    "max_temp": 71.35,
+                    "conditions": "light rain",
+                    "icon": "10d"
+                },
+                {
+                    "date": "October 03 2022",
+                    "sunrise": "October 03 2022, 6:58 AM",
+                    "sunset": "October 03 2022, 6:39 PM",
+                    "min_temp": 58.01,
+                    "max_temp": 72.64,
+                    "conditions": "light rain",
+                    "icon": "10d"
+                }
+            ],
+            "hourly_weather": [
+                {
+                    "time": "07:00",
+                    "temperature": 60.19,
+                    "conditions": "scattered clouds",
+                    "icon": "03d"
+                },
+                {
+                    "time": "08:00",
+                    "temperature": 61.25,
+                    "conditions": "scattered clouds",
+                    "icon": "03d"
+                },
+                {
+                    "time": "09:00",
+                    "temperature": 63.82,
+                    "conditions": "broken clouds",
+                    "icon": "04d"
+                },
+                {
+                    "time": "10:00",
+                    "temperature": 68.09,
+                    "conditions": "broken clouds",
+                    "icon": "04d"
+                },
+                {
+                    "time": "11:00",
+                    "temperature": 74.03,
+                    "conditions": "broken clouds",
+                    "icon": "04d"
+                },
+                {
+                    "time": "12:00",
+                    "temperature": 80.15,
+                    "conditions": "overcast clouds",
+                    "icon": "04d"
+                },
+                {
+                    "time": "13:00",
+                    "temperature": 82.09,
+                    "conditions": "overcast clouds",
+                    "icon": "04d"
+                },
+                {
+                    "time": "14:00",
+                    "temperature": 83.34,
+                    "conditions": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        }
+    }
+}
+```
+
 
 ## Contributors
   - [Michael Koulouvaris](https://github.com/mikekoul)
