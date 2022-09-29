@@ -1,21 +1,9 @@
 # README
 Sweater Weater - Mod 3 2205 BE
 
-
-## Table of Contents
-  - [Abstract](#abstract)
-  - [Technologies](#technologies)
-  - [Code Architecture](#code-architecture)
-  - [Illustrations](#illustrations)
-  - [Install + Setup](#set-up)
-  - [Contributors](#contributors)
-	- [Wins](#wins)
-	- [Challenges + Improvements](#challenges-+-Improvements)
-  - [Project Specs](#project-specs)
-
 ## Overview
 
-Our team is working in a service-oriented architecture building an application that can determine weather forecasts for a specified road trip, returning the weather to expect determined by arrival time at the destination. The front-end will communicate with your back-end through an API. Our job is to expose that API that satisfies the front-end team’s requirements.
+Our team is working in a service-oriented architecture building an application that can determine weather forecasts for a specified location, additionally it can create a road trip displaying travel time and estimated weather conditions at the location upon arrival. The front-end will communicate with your back-end through an API. Our job is to expose that API that satisfies the front-end team’s requirements, create secure user account creation and log in functionality, and generate API keys for the user to access the roadtrip end point. 
 
 Expose an API that aggregates data from multiple external APIs
 Expose an API that requires an authentication token
@@ -27,27 +15,21 @@ Return information in JSON format
 Further information can be found here
 [Whether, Sweater](https://backend.turing.edu/module3/projects/sweater_weather/)
 
-## Technologies
-  - Javascript
-  - eslint
-  - node
-  - Atom
-	- WebPack
-	- API 
-
-
-## Code Architecture
-
-
-## Illustrations
-
-Use https://gifcap.dev/ to make GIFs
-
+## Technologies/Gems
+  - Rails 5.2.7
+  - RESTful API
+  - Faraday Gem
+  - Bcrypt Gem
+  - Figaro Gem
+  - Wemock/VCR gem
+  - Simplcov
+  - RSPEC
 
 ## Install + Setup
-	- Install instructions, how to access the website and how to use the website
 
+Begin by cloning down the program and run a bundle to install gems
 
+`$ bundle install`
 
 ## Contributors
   - [Hayley Dixon](https://github.com/hheyhhay)
