@@ -17,7 +17,7 @@ describe 'RoadTrip API' do
     roadtrip_info = {
       "origin": "Denver,CO",
       "destination": "Santa Fe, NM",
-      "api_key": "@api_key"
+      "api_key": @api_key
     } 
 
     headers = {"CONTENT_TYPE" => "application/json"}
@@ -48,9 +48,9 @@ describe 'RoadTrip API' do
     expect(result[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
     expect(result[:data][:attributes][:weather_at_eta][:conditions]).to be_a(String)
   end
-end
 
-describe '#sad_path' do
+
+##sad_path
   it 'returns an error if no api key is given', :vcr do
     roadtrip_info = {
       "origin": "Denver,CO",
@@ -81,5 +81,34 @@ describe '#sad_path' do
     result = JSON.parse(response.body, symbolize_names: true)
     expect(response).to_not be_successful
     expect(response.status).to eq(401)
+  end
+
+  it 'returns a empty weather array and time equal to impossible if destination can not be found', :vcr do
+    roadtrip_info = {
+      "origin": "Denver,CO",
+      "destination": "London, UK",
+      "api_key": @api_key
+    } 
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/road_trip', headers: headers, params: JSON.generate(roadtrip_info)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+ 
+    expect(response).to be_successful
+    expect(response.status).to eq(200)
+    expect(result[:data][:attributes]).to have_key(:start_city)
+    expect(result[:data][:attributes][:start_city]).to be_a(String)
+    expect(result[:data][:attributes]).to have_key(:end_city)
+    expect(result[:data][:attributes][:end_city]).to be_a(String)
+    expect(result[:data][:attributes]).to have_key(:travel_time)
+    expect(result[:data][:attributes][:travel_time]).to eq('impossible')
+    expect(result[:data][:attributes]).to have_key(:weather_at_eta)
+    expect(result[:data][:attributes][:weather_at_eta]).to be_a(Hash)
+    expect(result[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
+    expect(result[:data][:attributes][:weather_at_eta][:temperature]).to eq([])
+    expect(result[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
+    expect(result[:data][:attributes][:weather_at_eta][:conditions]).to eq([])
   end
 end
