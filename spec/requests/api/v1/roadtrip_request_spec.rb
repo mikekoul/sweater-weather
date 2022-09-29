@@ -49,3 +49,37 @@ describe 'RoadTrip API' do
     expect(result[:data][:attributes][:weather_at_eta][:conditions]).to be_a(String)
   end
 end
+
+describe '#sad_path' do
+  it 'returns an error if no api key is given', :vcr do
+    roadtrip_info = {
+      "origin": "Denver,CO",
+      "destination": "Santa Fe, NM",
+      "api_key": ""
+    } 
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/road_trip', headers: headers, params: JSON.generate(roadtrip_info)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+    expect(response).to_not be_successful
+    expect(response.status).to eq(401)
+  end
+
+  it 'returns an error if bad api key is given', :vcr do
+    roadtrip_info = {
+      "origin": "Denver,CO",
+      "destination": "Santa Fe, NM",
+      "api_key": "badapikey"
+    } 
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/road_trip', headers: headers, params: JSON.generate(roadtrip_info)
+
+    result = JSON.parse(response.body, symbolize_names: true)
+    expect(response).to_not be_successful
+    expect(response.status).to eq(401)
+  end
+end
