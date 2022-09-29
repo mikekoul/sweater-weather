@@ -12,5 +12,16 @@ RSpec.describe RoadTripFacade do
       expect(trip.temperature).to be_a(Float)
       expect(trip.conditions).to be_a(String)
     end
+
+    it 'trip attributes when travel is more than a day', :vcr do
+      
+      trip = RoadTripFacade.trip("manhattan, ny", "los angeles, ca")
+
+      expect(trip.start_city).to eq("manhattan, ny")
+      expect(trip.end_city).to eq("los angeles, ca")
+      expect(trip.trip_time).to be_a(String)
+      expect(trip.temperature).to be_a(Float)
+      expect(trip.conditions).to be_a(String)
+    end
   end
 end
