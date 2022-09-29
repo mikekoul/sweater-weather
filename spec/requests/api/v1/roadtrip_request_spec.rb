@@ -13,7 +13,7 @@ describe 'RoadTrip API' do
     @api_key = result[:data][:attributes][:api_key]
   end
 
-  it 'returns a successfully formatted roadtrip response' do
+  it 'returns a successfully formatted roadtrip response', :vcr do
     roadtrip_info = {
       "origin": "Denver,CO",
       "destination": "Santa Fe, NM",
@@ -27,6 +27,6 @@ describe 'RoadTrip API' do
     result = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(response.status).to eq(201)
+    expect(response.status).to eq(200)
   end
 end
