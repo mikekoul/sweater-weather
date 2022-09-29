@@ -31,8 +31,20 @@ Begin by cloning down the program and run a bundle to install gems
 
 `$ bundle install`
 
-## Contributors
-  - [Hayley Dixon](https://github.com/hheyhhay)
+## API Keys
+
+The external APIs used in this project require user registration and keys can be obtained below:
+- [MapQuest API](https://developer.mapquest.com/documentation/)
+- [OPenWeather API](https://openweathermap.org/api/one-call-api)
+- 
+Once keys are obtained install figaro to generate a 'application.yml' file which can be found in the 'config' folder:
+
+'$ bundle exec figaro install'
+
+Store API Keys in this 'application.yml' which will be ingnored by git and kept from being pushed to GitHub
+
+`MAPQUEST_API_KEY: Your key`
+`OPENWEATHER_API_KEY: Your key`
 
 ## Wins
 	- What went well!
@@ -43,6 +55,5 @@ Begin by cloning down the program and run a bundle to install gems
 	- Any Bugs
 	- Future Iterations
 
-
-## Project Specs
-  - The project spec & rubric can be found [here](insert project spec sheet here)
+## Contributors
+  - [Michael Koulouvaris](https://github.com/mikekoul)
